@@ -60,7 +60,7 @@ jobs:
             parallel: '--parallel'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
@@ -83,7 +83,7 @@ jobs:
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
           WAGTAIL_CHECK_TEMPLATE_NUMBER_FORMAT: ${{ matrix.check_template_number_format }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -129,7 +129,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
@@ -158,7 +158,7 @@ jobs:
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
           DISABLE_TIMEZONE: ${{ matrix.notz }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -221,7 +221,7 @@ jobs:
         options: --health-cmd=$HEALTH_CMD --health-interval=10s --health-timeout=5s --health-retries=3 --cap-add=sys_nice
 
     steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
@@ -248,7 +248,7 @@ jobs:
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
           DISABLE_TIMEZONE: ${{ matrix.notz }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -265,7 +265,7 @@ jobs:
             emailuser: emailuser
     services:
       elasticsearch8:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.11.2
+        image: docker.elastic.co/elasticsearch/elasticsearch:9.4.2
         env:
           discovery.type: single-node
           xpack.security.enabled: false
@@ -278,7 +278,7 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
@@ -301,7 +301,7 @@ jobs:
           DATABASE_ENGINE: django.db.backends.sqlite3
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -327,7 +327,7 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       elasticsearch7:
-        image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+        image: docker.elastic.co/elasticsearch/elasticsearch:9.4.2
         env:
           discovery.type: single-node
           ES_JAVA_OPTS: '-Xms512m -Xmx512m'
@@ -339,7 +339,7 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -367,7 +367,7 @@ jobs:
           DATABASE_PASSWORD: postgres
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -394,7 +394,7 @@ jobs:
       - uses: ankane/setup-opensearch@v1
         with:
           opensearch-version: 2
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
@@ -417,7 +417,7 @@ jobs:
           DATABASE_ENGINE: django.db.backends.sqlite3
           USE_EMAIL_USER_MODEL: ${{ matrix.emailuser }}
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-data-${{ github.job }}-${{ strategy.job-index }}
           path: .coverage.*
@@ -435,7 +435,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -452,7 +452,7 @@ jobs:
           uv pip install --system coverage
 
       - name: Download coverage data
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           pattern: coverage-data-*
           merge-multiple: true
@@ -467,14 +467,14 @@ jobs:
           coverage html --skip-covered --skip-empty
 
       - name: Upload HTML report as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: coverage-report
           path: coverage_html_report
           include-hidden-files: true
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7
         with:
           flags: backend
           token: ${{ secrets.CODECOV_TOKEN }}
