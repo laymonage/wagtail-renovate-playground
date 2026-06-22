@@ -23,11 +23,6 @@
   },
 
   "packageRules": [
-    {
-      "matchCategories": ["js"],
-      "enabled": false,
-    },
-
     // Runtime dependencies in [project.dependencies] are user-facing.
     // Constraint changes propagate to everyone who installs Wagtail, so
     // they remain deliberate release-planning decisions, never automated.
@@ -65,11 +60,34 @@
       "groupName": "Python linters and formatters dependencies",
     },
 
-    // Front-end linters and formatters (prettier, eslint, stylelint plus
-    // their plugins/configs) across package.json and .pre-commit-config.yaml.
-    // `enabled: true` overrides the js-category disable above for just
-    // these packages so the npm versions get tracked too.
+    // Group any frontend dependencies that have no other grouping rule into one.
     {
+      "matchManagers": ["npm"],
+      "enabled": true,
+      "groupName": "Build tool dependencies",
+    },
+
+    // Group dependencies by runtime, storybook, testing, and linting/formatting.
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "enabled": true,
+      "groupName": "Node.js runtime dependencies",
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["/storybook/"],
+      "enabled": true,
+      "groupName": "Storybook dependencies",
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["/enzyme/", "/jest/", "/test/", "/mock/"],
+      "enabled": true,
+      "groupName": "Testing dependencies",
+    },
+    {
+      "matchManagers": ["npm"],
       "matchPackageNames": ["/prettier/", "/eslint/", "/stylelint/"],
       "enabled": true,
       "groupName": "Front-end linters and formatters dependencies",
